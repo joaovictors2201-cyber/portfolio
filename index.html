@@ -737,7 +737,7 @@ var P = {
         }
       ],
       procImg1:'landing page/wireframe - site.jpg',
-      procImg2:'landing page/tela de site - final para usar.gif',
+      procImg2:'https://raw.githubusercontent.com/joaovictors2201-cyber/portfolio/main/landing%20page/tela%20de%20site%20-%20final%20para%20usar.mp4',
       img1bg:'linear-gradient(135deg,#2a0000,#5c0000)',
       img2bg:'linear-gradient(135deg,#1a0a00,#4a1500)'
     },
@@ -892,6 +892,14 @@ function renderAll() {
   renderGrid('home-grid', 'featured', P.featured);
 }
 
+/* ── MEDIA TAG HELPER ── */
+function mediaTag(src) {
+  if (src.match(/\.mp4$/i)) {
+    return '<video src="'+src+'" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block"></video>';
+  }
+  return '<img src="'+src+'" alt="process">';
+}
+
 /* ── MODAL ── */
 function openModal(sec, idx) {
   var p = P[sec][idx];
@@ -910,8 +918,8 @@ function openModal(sec, idx) {
   }).join('');
   var heroBg  = p.heroImgSrc ? '' : 'background:'+p.bg;
   var heroImg = p.heroImgSrc ? '<img src="'+p.heroImgSrc+'" alt="'+title+'">' : '';
-  var p1 = p.procImg1 ? '<img src="'+p.procImg1+'" alt="process">' : iph;
-  var p2 = p.procImg2 ? '<img src="'+p.procImg2+'" alt="process">' : iph;
+  var p1 = p.procImg1 ? mediaTag(p.procImg1) : iph;
+  var p2 = p.procImg2 ? mediaTag(p.procImg2) : iph;
   var p1bg = p.procImg1 ? '' : p.img1bg;
   var p2bg = p.procImg2 ? '' : p.img2bg;
   document.getElementById('mscroll').innerHTML =
