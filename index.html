@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>João Victor — Designer Estratégico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--y:#F5C400;--o:#E55500;--g:#3DD67C;--bl:#1A2E6C;--bk:#111;--wh:#F5F4EF;--md:#666;--lt:#E5E4DF;--ov:rgba(10,10,10,.91);--nh:72px;--sr:'DM Serif Display',Georgia,serif;--ss:'DM Sans',system-ui,sans-serif;--ez:cubic-bezier(.25,.46,.45,.94);--sp:cubic-bezier(.34,1.46,.64,1)}
+body{font-family:var(--ss);background:var(--wh);color:var(--bk);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--lt)}::-webkit-scrollbar-thumb{background:var(--y)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 52px;background:var(--wh);border-bottom:1.5px solid var(--bk);z-index:1000;transition:background .3s}
+.n-logo{display:flex;align-items:center;height:36px}
+.n-logo img{height:100%;width:auto}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--bk);text-decoration:none;position:relative;padding-bottom:3px;transition:color .2s}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--y);transition:width .28s var(--ez)}
+.nav-links a:hover::after{width:100%}
+.nav-r{display:flex;align-items:center;gap:12px}
+.lt-wrap{display:flex;gap:4px}
+.lb{font-family:var(--ss);font-size:.66rem;font-weight:700;letter-spacing:.1em;background:none;border:1.5px solid #ccc;color:var(--md);cursor:pointer;padding:4px 10px;border-radius:100px;transition:all .2s}
+.lb.active{background:var(--bk);color:var(--wh);border-color:var(--bk)}
+.lb:hover:not(.active){background:var(--y);border-color:var(--y);color:var(--bk)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:var(--bk);transition:all .28s}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mob{display:none;position:fixed;top:var(--nh);left:0;right:0;bottom:0;background:var(--wh);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.mob.open{display:flex}
+.mob a{font-family:var(--sr);font-size:2.2rem;color:var(--bk);text-decoration:none;cursor:pointer;transition:color .2s}
+.mob a:hover{color:var(--o)}
+.mob-lt{display:flex;gap:10px;margin-top:10px}
+
+/* ── HERO ── */
+#hero{padding-top:var(--nh);min-height:100vh;background:var(--y);border-bottom:2px solid var(--bk);display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden}
+.hero-left{padding:72px 52px 80px;display:flex;flex-direction:column;justify-content:center}
+.hero-tag{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.45);margin-bottom:20px}
+.hero-h{font-family:var(--sr);font-size:clamp(2.4rem,4.2vw,3.8rem);line-height:1.08;margin-bottom:20px;color:var(--bk)}
+.hero-h em{font-style:italic;color:var(--o)}
+.hero-sub{font-size:1rem;color:rgba(0,0,0,.55);margin-bottom:40px;line-height:1.6;max-width:400px}
+.hero-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.btn-dk{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:var(--bk);color:var(--wh);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--bk);cursor:pointer;text-decoration:none;transition:all .24s var(--ez)}
+.btn-dk:hover{background:var(--o);border-color:var(--o);transform:translateY(-2px)}
+.btn-ol{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;background:transparent;color:var(--bk);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--bk);cursor:pointer;text-decoration:none;transition:all .24s var(--ez)}
+.btn-ol:hover{background:var(--bk);color:var(--wh);transform:translateY(-2px)}
+
+.hero-right{display:flex;align-items:center;justify-content:center;padding:72px 52px 80px;position:relative}
+
+/* Face animation container */
+.face-wrap{
+  position:relative;
+  width:300px;
+  height:360px;
+  cursor:pointer;
+  flex-shrink:0;
+  overflow:visible;
+}
+.face-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .08s;user-select:none;pointer-events:none}
+.face-frame.active{opacity:1}
+
+/* Blob mask photo reveal */
+.face-photo{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:5;
+  opacity:0;
+  transition:opacity .25s ease;
+  -webkit-mask-image:radial-gradient(circle 0px at center, #000 100%, transparent 100%);
+  mask-image:radial-gradient(circle 0px at center, #000 100%, transparent 100%);
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+}
+
+.face-photo img{
+  position:absolute;
+  width:760px;
+  height:auto;
+  left:-210px;
+  top:30px;
+  scale:1.1;
+  image-rendering:auto;
+  backface-visibility:hidden;
+  will-change:transform;
+}
+
+.face-wrap:hover .face-photo{
+  opacity:1;
+}
+
+.face-frame{
+  z-index:2;
+}
+
+/* Decorative dots */
+.hero-deco{position:absolute;right:0;bottom:0;width:180px;height:180px;opacity:.12;background-image:radial-gradient(circle,var(--bk) 1.5px,transparent 1.5px);background-size:16px 16px;pointer-events:none}
+
+/* ── TICKER ── */
+#ticker{background:var(--g);border-top:2px solid var(--bk);border-bottom:2px solid var(--bk);padding:12px 0;overflow:hidden}
+.tick-inner{display:flex;gap:48px;white-space:nowrap;animation:tick 28s linear infinite;width:max-content}
+.tick-item{font-family:var(--sr);font-style:italic;font-size:.95rem;color:var(--bk);flex-shrink:0}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SKILLS ── */
+#skills{padding:100px 52px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;border-bottom:2px solid var(--bk)}
+.skills-pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{padding:8px 18px;border:2px solid var(--bk);font-size:.76rem;font-weight:600;letter-spacing:.06em;cursor:default;border-radius:100px;transition:all .22s}
+.pill:hover{background:var(--y);border-color:var(--y)}
+.pill.tool{border-color:#ccc;color:var(--md)}
+.pill.tool:hover{background:var(--g);border-color:var(--g);color:var(--bk)}
+.skills-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--o);margin-bottom:16px}
+.skills-h{font-family:var(--sr);font-size:clamp(2rem,3.5vw,3rem);line-height:1.1;margin-bottom:20px}
+.skills-p{font-size:.94rem;color:var(--md);line-height:1.8}
+
+/* ── STATS BAR ── */
+.stats-bar{background:var(--bk);padding:40px 52px;display:flex;justify-content:center;gap:80px;flex-wrap:wrap;border-bottom:2px solid #222}
+.stat-item{text-align:center}
+.stat-n{font-family:var(--sr);font-size:2.6rem;color:var(--y);line-height:1}
+.stat-l{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#555;margin-top:6px}
+
+/* ── CASES ── */
+#cases{padding:100px 52px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:44px}
+.sec-h{font-family:var(--sr);font-size:clamp(1.8rem,3vw,2.4rem)}
+.sec-tag{font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--md)}
+
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cg .cc:first-child{grid-column:1/-1}
+.cc{background:var(--wh);border-radius:16px;overflow:hidden;cursor:pointer;box-shadow:0 2px 18px rgba(0,0,0,.07);transition:transform .42s var(--sp),box-shadow .4s var(--ez);display:flex;flex-direction:column;border:1.5px solid var(--lt)}
+.cc:hover{transform:translateY(-12px);box-shadow:0 28px 64px rgba(0,0,0,.14);border-color:transparent}
+.ci{position:relative;overflow:hidden}
+.cg .cc:first-child .ci{aspect-ratio:21/8}
+.cg .cc:not(:first-child) .ci{aspect-ratio:16/9}
+.cbg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;transition:transform .55s var(--ez)}
+.cbg img{width:100%;height:100%;object-fit:cover;display:block}
+.cc:hover .cbg{transform:scale(1.05)}
+.cov{position:absolute;inset:0;background:var(--ov);opacity:0;display:flex;align-items:center;justify-content:center;transition:opacity .3s var(--ez)}
+.cc:hover .cov{opacity:1}
+.covb{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--bk);background:var(--y);padding:11px 22px;transform:translateY(14px);transition:transform .36s var(--ez)}
+.cc:hover .covb{transform:translateY(0)}
+.cbadge{position:absolute;top:16px;left:16px;font-size:.6rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 13px;z-index:2;border-radius:2px}
+.ct{padding:20px 24px 24px;flex:1;display:flex;flex-direction:column;background:var(--wh)}
+.cm{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--md);margin-bottom:8px}
+.ctit{font-family:var(--sr);font-size:1.28rem;margin-bottom:8px;line-height:1.2}
+.cd{font-size:.8rem;color:#666;line-height:1.6;margin-bottom:16px;flex:1}
+.mr{display:flex;gap:20px;flex-wrap:wrap;border-top:1px solid var(--lt);padding-top:14px}
+.mi2 .mv{font-family:var(--sr);font-size:1.05rem;color:var(--bk);display:block;line-height:1.1}
+.mi2 .ml{font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--md);margin-top:3px;display:block}
+
+/* ── CONTACT ── */
+#contato{background:var(--bl);padding:100px 52px;border-top:2px solid #0d1e4a}
+.contact-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-tag{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
+.contact-h{font-family:var(--sr);font-size:clamp(2rem,3.4vw,2.9rem);color:#fff;line-height:1.1;margin-bottom:20px}
+.contact-h em{color:var(--y);font-style:italic}
+.contact-p{font-size:.93rem;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:28px}
+.contact-email{font-size:1rem;color:#fff;text-decoration:none;border-bottom:1.5px solid var(--y);padding-bottom:3px;transition:color .2s;display:inline-block}
+.contact-email:hover{color:var(--y)}
+.contact-social{display:flex;gap:16px;margin-top:20px}
+.contact-social a{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.contact-social a:hover{color:var(--y)}
+
+.cf{display:flex;flex-direction:column;gap:16px}
+.cf input,.cf select,.cf textarea{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.15);color:#fff;font-family:var(--ss);font-size:.88rem;padding:14px 18px;border-radius:8px;outline:none;transition:border-color .22s;resize:none}
+.cf input::placeholder,.cf textarea::placeholder{color:rgba(255,255,255,.3)}
+.cf input:focus,.cf select:focus,.cf textarea:focus{border-color:var(--y)}
+.cf select option{background:#1a2e6c;color:#fff}
+.cf textarea{min-height:120px}
+.cf-btn{padding:14px 28px;background:var(--y);color:var(--bk);font-family:var(--ss);font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:2px solid var(--y);cursor:pointer;transition:all .24s var(--ez);align-self:flex-start;border-radius:4px}
+.cf-btn:hover{background:transparent;color:var(--y);transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+footer{background:#080808;border-top:2px solid #1a1a1a;padding:28px 52px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.f-logo{height:28px;opacity:.55;transition:opacity .2s}
+.f-logo:hover{opacity:1}
+.f-copy{font-size:.64rem;color:#444;letter-spacing:.06em}
+.f-links{display:flex;gap:22px}
+.f-links a{font-size:.64rem;color:#444;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.f-links a:hover{color:var(--y)}
+.f-stripe{height:4px;background:linear-gradient(90deg,var(--y),var(--o),var(--g),var(--bl))}
+
+/* ── MODAL ── */
+.mb{position:fixed;inset:0;background:rgba(8,8,8,.85);z-index:3000;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(6px)}
+.mb.open{display:flex}
+.mbox{background:var(--wh);max-width:880px;width:100%;max-height:92vh;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;position:relative;animation:mIn .38s var(--sp)}
+@keyframes mIn{from{opacity:0;transform:scale(.94) translateY(18px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.mx{position:absolute;top:16px;right:16px;width:38px;height:38px;background:rgba(10,10,10,.55);color:#fff;border:none;border-radius:50%;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .2s;line-height:1}
+.mx:hover{background:var(--bk)}
+.ms{overflow-y:auto;flex:1}
+.ms::-webkit-scrollbar{width:3px}
+.ms::-webkit-scrollbar-thumb{background:var(--y)}
+.mh{width:100%;min-height:260px;position:relative;display:flex;align-items:flex-end}
+.mhbg{position:absolute;inset:0}
+.mhbg img{width:100%;height:100%;object-fit:cover}
+.mho{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.72) 0%,transparent 60%)}
+.mhc{position:relative;z-index:2;padding:28px 40px 32px}
+.mbadge{display:inline-block;font-size:.6rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;padding:5px 13px;border-radius:2px;margin-bottom:12px}
+.mcl{font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:8px}
+.mtit{font-family:var(--sr);font-size:clamp(1.7rem,3vw,2.4rem);color:#fff;line-height:1.1}
+.mbody{padding:36px 40px 52px}
+.mmet{display:flex;gap:24px;flex-wrap:wrap;padding:22px 0;border-top:1.5px solid var(--lt);border-bottom:1.5px solid var(--lt);margin-bottom:32px}
+.mm .mv{font-family:var(--sr);font-size:1.55rem;display:block;line-height:1.1}
+.mm .ml{font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--md);margin-top:4px;display:block}
+.msl{font-size:.61rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--md);margin-bottom:12px;margin-top:28px}
+.mtxt{font-size:.92rem;color:#444;line-height:1.82}
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.pst2{background:var(--lt);padding:18px 20px;border-radius:10px}
+.psn{font-family:var(--sr);font-size:1.5rem;color:var(--y);line-height:1;margin-bottom:8px}
+.pstit{font-weight:600;font-size:.82rem;margin-bottom:5px}
+.psd{font-size:.77rem;color:var(--md);line-height:1.55}
+.pimgs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.pimg{aspect-ratio:4/3;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,0,0,.25)}
+.pimg img{width:100%;height:100%;object-fit:cover}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.an{animation:fadeUp .5s var(--ez) both}
+.d1{animation-delay:.06s}.d2{animation-delay:.14s}.d3{animation-delay:.22s}.d4{animation-delay:.32s}
+
+/* ── BIO ── */
+#sobre{padding:100px 52px;display:grid;grid-template-columns:320px 1fr;gap:80px;align-items:start;border-bottom:2px solid var(--bk)}
+.bio-photo{width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--lt);flex-shrink:0}
+.bio-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.bio-tag{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--o);margin-bottom:16px}
+.bio-h{font-family:var(--sr);font-size:clamp(1.9rem,3.2vw,2.7rem);line-height:1.1;margin-bottom:24px}
+.bio-p{font-size:.93rem;color:#444;line-height:1.88;margin-bottom:14px}
+.bio-p:last-child{margin-bottom:0}
+
+/* ── EXPERIENCE ── */
+#experiencia{padding:100px 52px;border-bottom:2px solid var(--bk)}
+.exp-list{margin-top:44px}
+.exp-item{display:grid;grid-template-columns:260px 1fr;gap:52px;padding:32px 0;border-bottom:1px solid var(--lt)}
+.exp-item:last-child{border-bottom:none;padding-bottom:0}
+.exp-role{font-size:.6rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--o);margin-bottom:6px}
+.exp-company{font-family:var(--sr);font-size:1.15rem;line-height:1.2;margin-bottom:6px;color:var(--bk)}
+.exp-date{font-size:.68rem;color:var(--md);font-weight:500}
+.exp-desc{list-style:none;padding:0;margin:0}
+.exp-desc li{font-size:.85rem;color:#444;line-height:1.72;padding:2px 0 2px 20px;position:relative}
+.exp-desc li::before{content:'';position:absolute;left:0;top:12px;width:10px;height:2px;background:var(--y)}
+
+/* ── BEHANCE CTA ── */
+.behance-cta{padding:52px 0 0;margin-top:12px;border-top:1px solid var(--lt);display:flex;flex-direction:column;align-items:center;gap:16px}
+.behance-cta-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--md)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 22px}
+  .nav-links{display:none}
+  .hbg{display:flex}
+  #hero{grid-template-columns:1fr;min-height:auto;padding-bottom:0}
+  .hero-left{padding:44px 22px 36px;order:2}
+  .hero-right{padding:44px 22px 36px;order:1}
+  .face-wrap{width:220px;height:264px}
+  #sobre{grid-template-columns:1fr;padding:64px 22px;gap:36px}
+  .bio-photo{max-width:200px}
+  #experiencia{padding:64px 22px}
+  .exp-item{grid-template-columns:1fr;gap:12px}
+  #skills{grid-template-columns:1fr;padding:64px 22px;gap:40px}
+  .stats-bar{gap:36px;padding:36px 22px}
+  #cases{padding:64px 22px}
+  .cg{grid-template-columns:1fr}
+  .cg .cc:first-child{grid-column:auto}
+  .cg .cc:first-child .ci{aspect-ratio:16/9}
+  #contato{padding:64px 22px}
+  .contact-inner{grid-template-columns:1fr;gap:44px}
+  footer{padding:20px 22px;flex-direction:column;align-items:flex-start;gap:12px}
+  .mbody{padding:24px 22px 40px}
+  .mhc{padding:20px 22px 24px}
+  .ps,.pimgs{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="n-logo">
+    <img src="logo/logo-black.svg" alt="Meah Studio">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</a></li>
+    <li><a href="#cases" data-pt="Cases" data-en="Cases">Cases</a></li>
+    <li><a href="#skills" data-pt="Skills" data-en="Skills">Skills</a></li>
+    <li><a href="#contato" data-pt="Contato" data-en="Contact">Contato</a></li>
+  </ul>
+  <div class="nav-r">
+    <div class="lt-wrap">
+      <button class="lb active" onclick="setLang('pt')">PT</button>
+      <button class="lb"        onclick="setLang('en')">EN</button>
+    </div>
+    <div class="hbg" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob" id="mobMenu">
+  <a href="#sobre"   onclick="closeMob()" data-pt="Sobre Mim" data-en="About Me">Sobre Mim</a>
+  <a href="#cases"   onclick="closeMob()" data-pt="Cases"     data-en="Cases">Cases</a>
+  <a href="#skills"  onclick="closeMob()" data-pt="Skills"    data-en="Skills">Skills</a>
+  <a href="#contato" onclick="closeMob()" data-pt="Contato"   data-en="Contact">Contato</a>
+  <div class="mob-lt">
+    <button class="lb active" onclick="setLang('pt')">PT</button>
+    <button class="lb"        onclick="setLang('en')">EN</button>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="mb" id="modal" onclick="handleBdClick(event)">
+  <div class="mbox" id="mbox">
+    <button class="mx" onclick="closeModal()">✕</button>
+    <div class="ms" id="mscroll"></div>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-tag an d1" data-pt="Designer Estratégico · UX Designer" data-en="Strategic Designer · UX Designer">Designer Estratégico · UX Designer</p>
+    <h1 class="hero-h an d2"
+        data-pt='Não faço bonito<br>por acidente.<br><em>Faço estratégico<br>de propósito.</em>'
+        data-en='I don&apos;t make<br>beautiful by accident.<br><em>I make strategic<br>on purpose.</em>'>
+      Não faço bonito<br>por acidente.<br><em>Faço estratégico<br>de propósito.</em>
+    </h1>
+    <p class="hero-sub an d3"
+       data-pt="João Victor — designer que começa pelo problema, não pela tela."
+       data-en="João Victor — designer who starts with the problem, not the screen.">
+      João Victor — designer que começa pelo problema, não pela tela.
+    </p>
+    <div class="hero-ctas an d4">
+      <a class="btn-dk" href="#cases" data-pt="Ver Cases →" data-en="See Cases →">Ver Cases →</a>
+      <a class="btn-ol" href="https://www.linkedin.com/in/joaovictorvaladares/" target="_blank">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="face-wrap" id="faceWrap">
+      <img class="face-frame active" src="rosto-frame-animacao/Prancheta 1.svg" alt="">
+      <img class="face-frame"        src="rosto-frame-animacao/Prancheta 2.svg" alt="">
+      <img class="face-frame"        src="rosto-frame-animacao/Prancheta 3.svg" alt="">
+      <img class="face-frame"        src="rosto-frame-animacao/Prancheta 4.svg" alt="">
+      <img class="face-frame"        src="rosto-frame-animacao/Prancheta 5.svg" alt="">
+      <img class="face-frame"        src="rosto-frame-animacao/Prancheta 6.svg" alt="">
+      <img class="face-frame"        src="rosto-frame-animacao/Prancheta 7.svg" alt="">
+      <!-- Photo reveal on hover — troque o src pela URL/caminho da sua foto -->
+      <div class="face-photo">
+        <img src="612c2933-8dfe-47ec-97c8-37e93523e873.jpg" alt="João Victor" id="heroPhoto">
+      </div>
+    </div>
+    <div class="hero-deco"></div>
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div id="ticker">
+  <div class="tick-inner">
+    <span class="tick-item">Brand Identity</span><span class="tick-item">✦</span>
+    <span class="tick-item">UX/UI Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Graphic Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Illustration</span><span class="tick-item">✦</span>
+    <span class="tick-item">Strategic Thinking</span><span class="tick-item">✦</span>
+    <span class="tick-item">Visual Identity</span><span class="tick-item">✦</span>
+    <span class="tick-item">Art Direction</span><span class="tick-item">✦</span>
+    <span class="tick-item">Brand Identity</span><span class="tick-item">✦</span>
+    <span class="tick-item">UX/UI Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Graphic Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Illustration</span><span class="tick-item">✦</span>
+    <span class="tick-item">Strategic Thinking</span><span class="tick-item">✦</span>
+    <span class="tick-item">Visual Identity</span><span class="tick-item">✦</span>
+    <span class="tick-item">Art Direction</span><span class="tick-item">✦</span>
+  </div>
+</div>
+
+<!-- ══ STATS ══ -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-n">5+</div><div class="stat-l" data-pt="Anos de experiência" data-en="Years of experience">Anos de experiência</div></div>
+  <div class="stat-item"><div class="stat-n">80+</div><div class="stat-l" data-pt="Projetos entregues" data-en="Projects delivered">Projetos entregues</div></div>
+  <div class="stat-item"><div class="stat-n">40+</div><div class="stat-l" data-pt="Clientes atendidos" data-en="Clients served">Clientes atendidos</div></div>
+</div>
+
+<!-- ══ BIO ══ -->
+<section id="sobre">
+  <div class="bio-photo">
+    <img src="612c2933-8dfe-47ec-97c8-37e93523e873.jpg" alt="João Victor">
+  </div>
+  <div>
+    <p class="bio-tag" data-pt="Designer Estratégico · Sobre Mim" data-en="Strategic Designer · About Me">Designer Estratégico · Sobre Mim</p>
+    <h2 class="bio-h" data-pt="Design com propósito,<br>estratégia com olhar." data-en="Design with purpose,<br>strategy with vision.">Design com propósito,<br>estratégia com olhar.</h2>
+    <p class="bio-p"
+       data-pt="Sou João Victor, Designer com mais de 6 anos de experiência em direção de arte, identidade de marca e campanhas digitais. Ao longo da minha trajetória, desenvolvi mais de 300 ativos criativos para TV, digital e impresso, atendendo marcas como Grupo Bandeirantes, C6 Bank, Red Bull e Stone."
+       data-en="I'm João Victor, a Designer with over 6 years of experience in art direction, brand identity and digital campaigns. Throughout my career, I developed over 300 creative assets for TV, digital and print, serving brands like Grupo Bandeirantes, C6 Bank, Red Bull and Stone.">
+      Sou João Victor, Designer com mais de 6 anos de experiência em direção de arte, identidade de marca e campanhas digitais. Ao longo da minha trajetória, desenvolvi mais de 300 ativos criativos para TV, digital e impresso, atendendo marcas como Grupo Bandeirantes, C6 Bank, Red Bull e Stone.
+    </p>
+    <p class="bio-p"
+       data-pt="A virada para UX foi uma consequência natural de sempre ter começado pelos fluxos antes de ir para os pixels. No desenvolvimento da plataforma mobile de afiliados da Nestlé, conduzi o processo completo de produto: discovery com stakeholders, arquitetura de informação, wireframes validados, duas versões de interface e um protótipo navegável testado com usuários reais. Na Publination, essa frente se consolidou — passei a liderar o UX/UI de plataformas web responsivas e landing pages para marcas."
+       data-en="The shift to UX was a natural consequence of always starting with flows before pixels. In developing Nestlé's mobile affiliate platform, I led the complete product process: stakeholder discovery, information architecture, validated wireframes, two interface versions and a navigable prototype tested with real users. At Publination, this front consolidated — I took on UX/UI for responsive web platforms and landing pages for brands.">
+      A virada para UX foi uma consequência natural de sempre ter começado pelos fluxos antes de ir para os pixels. No desenvolvimento da plataforma mobile de afiliados da Nestlé, conduzi o processo completo de produto: discovery com stakeholders, arquitetura de informação, wireframes validados, duas versões de interface e um protótipo navegável testado com usuários reais. Na Publination, essa frente se consolidou — passei a liderar o UX/UI de plataformas web responsivas e landing pages para marcas.
+    </p>
+    <p class="bio-p"
+       data-pt="Meu trabalho vai além da estética — acredito que um bom design conta histórias, conecta pessoas e fortalece marcas. Seja desenvolvendo Key Visuals para campanhas de alto impacto, construindo identidades que migram do papel para a arquitetura física, ou desdobrando sistemas visuais para múltiplos canais, meu foco está sempre em traduzir estratégia em resultado visual com propósito."
+       data-en="My work goes beyond aesthetics — I believe good design tells stories, connects people and strengthens brands. Whether developing Key Visuals for high-impact campaigns, building identities that migrate from paper to physical architecture, or unfolding visual systems for multiple channels, my focus is always on translating strategy into purposeful visual results.">
+      Meu trabalho vai além da estética — acredito que um bom design conta histórias, conecta pessoas e fortalece marcas. Seja desenvolvendo Key Visuals para campanhas de alto impacto, construindo identidades que migram do papel para a arquitetura física, ou desdobrando sistemas visuais para múltiplos canais, meu foco está sempre em traduzir estratégia em resultado visual com propósito.
+    </p>
+    <p class="bio-p"
+       data-pt="Com MBA em Marketing Estratégico e duas especializações em andamento — Design Centrado no Usuário pela PUCRS e Programação pela EBAC — uno visão criativa, pensamento de produto e lógica de negócio para entregar soluções que funcionam tanto para o usuário quanto para o mercado."
+       data-en="With an MBA in Strategic Marketing and two specializations underway — User-Centered Design from PUCRS and Programming from EBAC — I combine creative vision, product thinking and business logic to deliver solutions that work for both the user and the market.">
+      Com MBA em Marketing Estratégico e duas especializações em andamento — Design Centrado no Usuário pela PUCRS e Programação pela EBAC — uno visão criativa, pensamento de produto e lógica de negócio para entregar soluções que funcionam tanto para o usuário quanto para o mercado.
+    </p>
+  </div>
+</section>
+
+<!-- ══ CASES ══ -->
+<section id="cases">
+  <div class="sec-head">
+    <h2 class="sec-h" data-pt="Cases e Projetos" data-en="Cases & Projects">Cases e Projetos</h2>
+    <span class="sec-tag" data-pt="Seleção de trabalhos" data-en="Selected works">Seleção de trabalhos</span>
+  </div>
+  <div class="cg" id="home-grid"></div>
+  <div class="behance-cta">
+    <p class="behance-cta-label" data-pt="Confira outros projetos" data-en="See more projects">Confira outros projetos</p>
+    <a class="btn-dk" href="https://www.behance.net/estudiocriativomeah" target="_blank" data-pt="Behance ↗" data-en="Behance ↗">Behance ↗</a>
+  </div>
+</section>
+
+<!-- ══ EXPERIÊNCIA ══ -->
+<section id="experiencia">
+  <div class="sec-head">
+    <h2 class="sec-h" data-pt="Experiência Profissional" data-en="Work Experience">Experiência Profissional</h2>
+    <span class="sec-tag" data-pt="Trajetória" data-en="Career path">Trajetória</span>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div>
+        <p class="exp-role" data-pt="Designer · UX Designer" data-en="Designer · UX Designer">Designer · UX Designer</p>
+        <p class="exp-company">Publination</p>
+        <p class="exp-date" data-pt="Janeiro 2026 – Atual" data-en="January 2026 – Present">Janeiro 2026 – Atual</p>
+      </div>
+      <ul class="exp-desc">
+        <li data-pt="Responsável pelo UX/UI de plataformas web responsivas (desktop e mobile) e Landing Pages para afiliados e marcas parceiras." data-en="Responsible for UX/UI of responsive web platforms (desktop and mobile) and Landing Pages for affiliates and partner brands.">Responsável pelo UX/UI de plataformas web responsivas (desktop e mobile) e Landing Pages para afiliados e marcas parceiras.</li>
+        <li data-pt="Desdobramento e criação de Key Visuals (KVs) para campanhas digitais, ativações de marca e eventos especiais — incluindo Starbucks e Boticário." data-en="Unfolding and creation of Key Visuals (KVs) for digital campaigns, brand activations and special events — including Starbucks and Boticário.">Desdobramento e criação de Key Visuals (KVs) para campanhas digitais, ativações de marca e eventos especiais — incluindo Starbucks e Boticário.</li>
+        <li data-pt="Criação e finalização de materiais gráficos para kits físicos e ativações de campanhas especiais, com entrega aprovada pelos times das marcas." data-en="Creation and finishing of graphic materials for physical kits and special campaign activations, with delivery approved by brand teams.">Criação e finalização de materiais gráficos para kits físicos e ativações de campanhas especiais, com entrega aprovada pelos times das marcas.</li>
+        <li data-pt="Tradução visual estratégica para campanhas comerciais e Pitch Decks — atendendo marcas como Boticário, FIAT, Nestlé, Nespresso, Nescau, Burger King e Danilo Gentili." data-en="Strategic visual translation for commercial campaigns and Pitch Decks — serving brands like Boticário, FIAT, Nestlé, Nespresso, Nescau, Burger King and Danilo Gentili.">Tradução visual estratégica para campanhas comerciais e Pitch Decks — atendendo marcas como Boticário, FIAT, Nestlé, Nespresso, Nescau, Burger King e Danilo Gentili.</li>
+        <li data-pt="Edição de vídeo para campanhas digitais e conteúdo orgânico de marca." data-en="Video editing for digital campaigns and organic brand content.">Edição de vídeo para campanhas digitais e conteúdo orgânico de marca.</li>
+        <li data-pt="Criação de artes estáticas e carrosséis para Instagram com foco em conversão e engajamento." data-en="Creation of static artworks and Instagram carousels focused on conversion and engagement.">Criação de artes estáticas e carrosséis para Instagram com foco em conversão e engajamento.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <p class="exp-role" data-pt="Designer Pleno" data-en="Mid-level Designer">Designer Pleno</p>
+        <p class="exp-company">Huntington</p>
+        <p class="exp-date">Maio 2024 – Janeiro 2026</p>
+      </div>
+      <ul class="exp-desc">
+        <li data-pt="Liderança da direção de arte para comunicação digital, branding de perfis médicos e eventos corporativos." data-en="Led art direction for digital communication, medical profile branding and corporate events.">Liderança da direção de arte para comunicação digital, branding de perfis médicos e eventos corporativos.</li>
+        <li data-pt="Produção de conteúdo em vídeo e ativos visuais alinhados às diretrizes da marca." data-en="Produced video content and visual assets aligned with brand guidelines.">Produção de conteúdo em vídeo e ativos visuais alinhados às diretrizes da marca.</li>
+        <li data-pt="Desenvolvimento de comunicação visual e assets para eventos internos e externos." data-en="Developed visual communication and assets for internal and external events.">Desenvolvimento de comunicação visual e assets para eventos internos e externos.</li>
+        <li data-pt="Suporte à evolução do site institucional com foco em UX, arquitetura de informação e alinhamento à identidade de marca." data-en="Supported institutional website evolution focused on UX, information architecture and brand identity alignment.">Suporte à evolução do site institucional com foco em UX, arquitetura de informação e alinhamento à identidade de marca.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <p class="exp-role" data-pt="Designer Pleno" data-en="Mid-level Designer">Designer Pleno</p>
+        <p class="exp-company">Grupo Bandeirantes de Comunicação <span style="font-size:.8rem;font-family:var(--ss);font-weight:500;color:var(--md)">(NEWCO)</span></p>
+        <p class="exp-date">Julho 2022 – Abril 2024</p>
+      </div>
+      <ul class="exp-desc">
+        <li data-pt="Direção de arte e desdobramento de identidade visual para 8 canais simultâneos (BandSports, BandNews, Arte1, entre outros)." data-en="Art direction and visual identity unfolding for 8 simultaneous channels (BandSports, BandNews, Arte1, among others).">Direção de arte e desdobramento de identidade visual para 8 canais simultâneos (BandSports, BandNews, Arte1, entre outros).</li>
+        <li data-pt="Criação de +300 ativos visuais para TV, plataformas digitais e ativações de marca." data-en="Created 300+ visual assets for TV, digital platforms and brand activations.">Criação de +300 ativos visuais para TV, plataformas digitais e ativações de marca.</li>
+        <li data-pt="Estudo e aplicação de IA para otimização e aceleração da produção de ativos digitais — reduzindo o tempo de entrega sem perda de qualidade criativa." data-en="Research and application of AI to optimize and accelerate digital asset production — reducing delivery time without compromising creative quality.">Estudo e aplicação de IA para otimização e aceleração da produção de ativos digitais — reduzindo o tempo de entrega sem perda de qualidade criativa.</li>
+        <li data-pt="Desenvolvimento de Key Visuals para parcerias estratégicas com C6 Bank e Canal Empreender." data-en="Developed Key Visuals for strategic partnerships with C6 Bank and Canal Empreender.">Desenvolvimento de Key Visuals para parcerias estratégicas com C6 Bank e Canal Empreender.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <p class="exp-role" data-pt="Designer" data-en="Designer">Designer</p>
+        <p class="exp-company">IEDE</p>
+        <p class="exp-date">Setembro 2021 – Julho 2022</p>
+      </div>
+      <ul class="exp-desc">
+        <li data-pt="Criação de toda a identidade visual do programa de formação de analistas de evidências educacionais — do conceito ao sistema aplicado." data-en="Created the complete visual identity for the educational evidence analyst training program — from concept to applied system.">Criação de toda a identidade visual do programa de formação de analistas de evidências educacionais — do conceito ao sistema aplicado.</li>
+        <li data-pt="Desenvolvimento de Landing Page, aplicação de marca e fechamento de produtos impressos para o programa." data-en="Developed Landing Page, brand application and print product finishing for the program.">Desenvolvimento de Landing Page, aplicação de marca e fechamento de produtos impressos para o programa.</li>
+        <li data-pt="Design de identidades e materiais para eventos corporativos e educacionais." data-en="Designed identities and materials for corporate and educational events.">Design de identidades e materiais para eventos corporativos e educacionais.</li>
+        <li data-pt="Diagramação de materiais editoriais e criação de assets estratégicos para redes sociais." data-en="Laid out editorial materials and created strategic assets for social media.">Diagramação de materiais editoriais e criação de assets estratégicos para redes sociais.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <p class="exp-role" data-pt="Designer" data-en="Designer">Designer</p>
+        <p class="exp-company">New Language</p>
+        <p class="exp-date">Dezembro 2020 – Abril 2022</p>
+      </div>
+      <ul class="exp-desc">
+        <li data-pt="Designer responsável por todo o universo visual da escola de inglês — tornando-me referência criativa da marca." data-en="Designer responsible for the entire visual universe of the English school — becoming the brand's creative reference.">Designer responsável por todo o universo visual da escola de inglês — tornando-me referência criativa da marca.</li>
+        <li data-pt="Desenvolvimento do visual das frentes de avanço para cada módulo do curso e produção de e-books educacionais." data-en="Developed visual materials for course advancement milestones and produced educational e-books.">Desenvolvimento do visual das frentes de avanço para cada módulo do curso e produção de e-books educacionais.</li>
+        <li data-pt="Criação de identidade visual da marca, identidades de campanhas especiais e implantação da frente visual para educação infantil." data-en="Created brand visual identity, special campaign identities and implemented the visual line for children's education.">Criação de identidade visual da marca, identidades de campanhas especiais e implantação da frente visual para educação infantil.</li>
+        <li data-pt="Direção e edição de vídeo para comunicação institucional e campanhas digitais da marca." data-en="Directed and edited video for institutional communication and digital campaigns.">Direção e edição de vídeo para comunicação institucional e campanhas digitais da marca.</li>
+        <li data-pt="Supervisão e aprovação de artes produzidas por agência externa, garantindo consistência com a identidade da marca." data-en="Supervised and approved artwork produced by external agency, ensuring consistency with brand identity.">Supervisão e aprovação de artes produzidas por agência externa, garantindo consistência com a identidade da marca.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills">
+  <div class="skills-pills">
+    <span class="pill" data-pt="Identidade Visual"              data-en="Visual Identity">Identidade Visual</span>
+    <span class="pill" data-pt="UX/UI Design"                  data-en="UX/UI Design">UX/UI Design</span>
+    <span class="pill" data-pt="Brand Strategy"                data-en="Brand Strategy">Brand Strategy</span>
+    <span class="pill" data-pt="Design Gráfico"                data-en="Graphic Design">Design Gráfico</span>
+    <span class="pill" data-pt="Ilustração"                    data-en="Illustration">Ilustração</span>
+    <span class="pill" data-pt="Design System"                 data-en="Design System">Design System</span>
+    <span class="pill" data-pt="Design Editorial"              data-en="Editorial Design">Design Editorial</span>
+    <span class="pill" data-pt="Direção de Arte"               data-en="Art Direction">Direção de Arte</span>
+    <span class="pill" data-pt="Apresentação Comercial"        data-en="Pitch Deck">Apresentação Comercial</span>
+    <span class="pill" data-pt="Edição de Vídeo"               data-en="Video Editing">Edição de Vídeo</span>
+    <span class="pill tool" data-pt="Figma"                    data-en="Figma">Figma</span>
+    <span class="pill tool" data-pt="Illustrator"              data-en="Illustrator">Illustrator</span>
+    <span class="pill tool" data-pt="Photoshop"                data-en="Photoshop">Photoshop</span>
+    <span class="pill tool" data-pt="InDesign"                 data-en="InDesign">InDesign</span>
+    <span class="pill tool" data-pt="Premiere"                 data-en="Premiere">Premiere</span>
+    <span class="pill tool" data-pt="After Effects"            data-en="After Effects">After Effects</span>
+    <span class="pill tool" data-pt="Miro"                     data-en="Miro">Miro</span>
+    <span class="pill tool" data-pt="Claude"                   data-en="Claude">Claude</span>
+    <span class="pill tool" data-pt="Gemini"                   data-en="Gemini">Gemini</span>
+    <span class="pill tool" data-pt="Visual Electrics"         data-en="Visual Electrics">Visual Electrics</span>
+    <span class="pill tool" data-pt="Runway"                   data-en="Runway">Runway</span>
+    <span class="pill tool" data-pt="Flow"                     data-en="Flow">Flow</span>
+  </div>
+  <div class="skills-text">
+    <p class="skills-label" data-pt="Habilidades &amp; Skills" data-en="Skills &amp; Expertise">Habilidades &amp; Skills</p>
+    <h2 class="skills-h" data-pt="Design com intenção,<br>resultado com propósito." data-en="Design with intention,<br>results with purpose.">Design com intenção,<br>resultado com propósito.</h2>
+    <p class="skills-p" data-pt="Não sou apenas um designer — sou um parceiro estratégico. Trabalho na intersecção entre pensamento de negócio e execução visual. Começo sempre com perguntas: qual é o problema real? quem precisa ser impactado? o que o resultado precisa gerar?" data-en="I'm not just a designer — I'm a strategic partner. I work at the intersection of business thinking and visual execution. I always start with questions: what's the real problem? who needs to be impacted? what should the result generate?">Não sou apenas um designer — sou um parceiro estratégico. Trabalho na intersecção entre pensamento de negócio e execução visual. Começo sempre com perguntas: qual é o problema real? quem precisa ser impactado? o que o resultado precisa gerar?</p>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contato">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <p class="contact-tag" data-pt="Vamos trabalhar juntos" data-en="Let's work together">Vamos trabalhar juntos</p>
+      <h2 class="contact-h"
+          data-pt='Pronto para fazer algo <em>diferente</em>?'
+          data-en='Ready to make something <em>different</em>?'>
+        Pronto para fazer algo <em>diferente</em>?
+      </h2>
+      <p class="contact-p"
+         data-pt="Projetos que importam começam com uma conversa honesta. Me conta o seu desafio."
+         data-en="Projects that matter start with an honest conversation. Tell me your challenge.">
+        Projetos que importam começam com uma conversa honesta. Me conta o seu desafio.
+      </p>
+      <a href="mailto:joao@estudiomeah.com" class="contact-email">joao@estudiomeah.com</a>
+      <div class="contact-social">
+        <a href="https://www.linkedin.com/in/joaovictorvaladares/" target="_blank">LinkedIn ↗</a>
+        <a href="https://www.behance.net/estudiocriativomeah" target="_blank">Behance ↗</a>
+        <a href="https://www.instagram.com/apenas.um.jovi/" target="_blank">Instagram ↗</a>
+      </div>
+    </div>
+    <form class="cf" id="contactForm" onsubmit="return sendContactForm()">
+      <input type="text"  id="f-nome"  data-placeholder-pt="Seu nome"              data-placeholder-en="Your name"            placeholder="Seu nome">
+      <input type="email" id="f-email" data-placeholder-pt="Seu e-mail"            data-placeholder-en="Your email"           placeholder="Seu e-mail">
+      <select id="f-tipo">
+        <option value="" disabled selected data-pt="Tipo de projeto" data-en="Project type">Tipo de projeto</option>
+        <option data-pt="Brand Identity" data-en="Brand Identity">Brand Identity</option>
+        <option data-pt="UX/UI Design"   data-en="UX/UI Design">UX/UI Design</option>
+        <option data-pt="Design Gráfico" data-en="Graphic Design">Design Gráfico</option>
+        <option data-pt="Ilustração"     data-en="Illustration">Ilustração</option>
+        <option data-pt="Edição de Vídeo" data-en="Video Editing">Edição de Vídeo</option>
+        <option data-pt="Outro"          data-en="Other">Outro</option>
+      </select>
+      <textarea id="f-desc" data-placeholder-pt="Fale sobre o seu projeto..." data-placeholder-en="Tell me about your project..." placeholder="Fale sobre o seu projeto..."></textarea>
+      <button type="submit" class="cf-btn" data-pt="Enviar mensagem →" data-en="Send message →">Enviar mensagem →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<div class="f-stripe"></div>
+<footer>
+  <img src="logo/logo white.svg" alt="Meah Studio" class="f-logo">
+  <span class="f-copy">© 2025 João Victor — UX Designer</span>
+  <div class="f-links">
+    <a href="https://www.behance.net/estudiocriativomeah" target="_blank">Behance</a>
+    <a href="https://www.linkedin.com/in/joaovictorvaladares/" target="_blank">LinkedIn</a>
+    <a href="https://www.instagram.com/apenas.um.jovi/" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script>
+var lang = 'pt';
+var curModal = null;
+
+/* ═══════════════════════════════════════
+   PROJECT DATA
+   ═══════════════════════════════════════ */
+var P = {
+  featured: [
+
+    /* ── 01 · NESTLÉ ── */
+    {
+      num:'01', badge:'#002F87', badgeTxt:'#fff',
+      client:'Nestlé Brasil',
+      cat:{pt:'Product Design · Mobile', en:'Product Design · Mobile'},
+      year:'2024',
+      title:{pt:'Plataforma de Afiliados', en:'Affiliates Platform'},
+      short:{
+        pt:'App mobile para afiliados Nestlé — do briefing ao protótipo navegável, com arquitetura de informação, 2 versões de identidade e validação por teste de usabilidade.',
+        en:'Mobile app for Nestlé affiliates — from briefing to navigable prototype, with information architecture, 2 identity versions and usability testing validation.'
+      },
+      bg:'linear-gradient(145deg,#001f5c,#0a3d9e)',
+      imgSrc:'plataforma - nestle/1x/CAPA.png',
+      heroImgSrc:'plataforma - nestle/1x/CAPA.png',
+      metrics:[
+        {v:'3',   l:{pt:'Versões do produto',    en:'Product versions'}},
+        {v:'2',   l:{pt:'Paletas exploradas',    en:'Color palettes'}},
+        {v:'IA',  l:{pt:'No fluxo de trabalho',  en:'In the workflow'}}
+      ],
+      challenge:{
+        pt:'Como projetar um app mobile para afiliados Nestlé que centralizasse vendas, campanhas, pagamentos e recompensas — servindo um público com diferentes graus de familiaridade digital, sem gerar fricção nem curva de aprendizado? O produto precisava ser funcional no primeiro acesso, com fluxos claros e hierarquia visual que guiasse o usuário sem instrução externa.',
+        en:"How to design a mobile app for Nestlé affiliates that centralized sales, campaigns, payments and rewards — serving an audience with varying levels of digital familiarity, without generating friction or a learning curve? The product needed to be functional on first access, with clear flows and visual hierarchy that guided users without external instruction."
+      },
+      strategy:{
+        pt:'Participei das reuniões diretas com stakeholders desde o início, traduzindo requisitos de negócio em fluxos reais antes de qualquer pixel. Construí o processo em camadas deliberadas: wireframe primeiro para validar arquitetura e navegação, depois UI realista para definir identidade, depois protótipo navegável para testar com usuários. Usei IA como aceleradora no meio do processo — para explorar variações de layout, testar hierarquias visuais e gerar alternativas de componentes rapidamente — mantendo curadoria e pensamento crítico em cada decisão de produto.',
+        en:"I participated in direct stakeholder meetings from the start, translating business requirements into real flows before any pixels. I built the process in deliberate layers: wireframe first to validate architecture and navigation, then realistic UI to define identity, then navigable prototype to test with users. I used AI as an accelerator mid-process — to explore layout variations, test visual hierarchies and rapidly generate component alternatives — maintaining curation and critical thinking in every product decision."
+      },
+      steps:[
+        {
+          n:'01',
+          t:{pt:'Discovery & Escopo',      en:'Discovery & Scope'},
+          d:{
+            pt:'Participação em reuniões com stakeholders para mapear fluxos críticos, definir prioridade de telas (login, dashboard, campanhas, pagamentos, recompensas) e alinhar deadline e critérios de entrega.',
+            en:'Participation in stakeholder meetings to map critical flows, define screen priority (login, dashboard, campaigns, payments, rewards) and align deadline and delivery criteria.'
+          }
+        },
+        {
+          n:'02',
+          t:{pt:'Wireframe & Arquitetura', en:'Wireframe & Architecture'},
+          d:{
+            pt:'Criação dos wireframes de todas as telas — definindo arquitetura de informação, hierarquia de conteúdo e padrões de navegação antes de qualquer decisão visual. Etapa apresentada e validada com o time.',
+            en:'Creation of wireframes for all screens — defining information architecture, content hierarchy and navigation patterns before any visual decision. Stage presented and validated with the team.'
+          }
+        },
+        {
+          n:'03',
+          t:{pt:'UI Design com IA',        en:'UI Design with AI'},
+          d:{
+            pt:'Desenvolvimento das telas em 2 versões de paleta (azul navy clássico e variação mais acessível). IA utilizada para geração de variações de layout e exploração acelerada de componentes — reduzindo o tempo de iteração sem comprometer a qualidade das decisões.',
+            en:'Screen development in 2 color palette versions (classic navy blue and more accessible variation). AI used for layout variation generation and accelerated component exploration — reducing iteration time without compromising decision quality.'
+          }
+        },
+        {
+          n:'04',
+          t:{pt:'Protótipo & Teste',       en:'Prototype & Testing'},
+          d:{
+            pt:'Construção do protótipo navegável no Figma e condução do teste de usabilidade — identificação de pontos de fricção nos fluxos principais, refinamento de componentes e entrega da versão final aprovada.',
+            en:'Construction of the navigable Figma prototype and usability testing — identification of friction points in main flows, component refinement and delivery of the approved final version.'
+          }
+        }
+      ],
+      procImg1:'plataforma - nestle/1x/wireframe + protótipo.png',
+      procImg2:'plataforma - nestle/1x/versões do protótipo navegável.png',
+      img1bg:'linear-gradient(135deg,#0a0a2a,#1a1a4a)',
+      img2bg:'linear-gradient(135deg,#0a1a3a,#1a3060)'
+    },
+
+    /* ── 02 · NESTLÉ LANDING PAGES ── */
+    {
+      num:'02', badge:'#CC0000', badgeTxt:'#fff',
+      client:'Nestlé Brasil',
+      cat:{pt:'Web Design · Creator Economy', en:'Web Design · Creator Economy'},
+      year:'2025',
+      title:{pt:'Afiliados Nestlé — Landing Pages', en:'Nestlé Affiliates — Landing Pages'},
+      short:{
+        pt:'Landing pages e formulários de captação para o primeiro programa estruturado de afiliados da indústria alimentícia no Brasil — cobrindo 5+ marcas do grupo com identidades visuais distintas.',
+        en:'Landing pages and capture forms for the first structured affiliate program in the Brazilian food industry — covering 5+ group brands with distinct visual identities.'
+      },
+      bg:'linear-gradient(145deg,#5c0000,#CC0000)',
+      imgSrc:'landing page/capa.png',
+      heroImgSrc:'landing page/capa.png',
+      metrics:[
+        {v:'5+',  l:{pt:'Marcas atendidas',          en:'Brands covered'}},
+        {v:'1ª',  l:{pt:'Na indústria alimentícia BR', en:'In food industry BR'}},
+        {v:'D2C', l:{pt:'Canal de performance',       en:'Performance channel'}}
+      ],
+      challenge:{
+        pt:'Como criar landing pages de captação de afiliados que comunicassem claramente o programa para criadores de conteúdo — respeitando brandbooks completamente distintos (Dolce Gusto, Kopenhagen, Nespresso, Nestlé Health Science, entre outros) — enquanto mantinham um fluxo de cadastro coerente e um processo de curadoria de perfil eficiente? O desafio era escalar a mesma lógica para múltiplas marcas sem perder a identidade de nenhuma delas.',
+        en:"How to create affiliate recruitment landing pages that clearly communicated the program to content creators — respecting completely distinct brandbooks (Dolce Gusto, Kopenhagen, Nespresso, Nestlé Health Science, among others) — while maintaining a coherent registration flow and an efficient profile curation process? The challenge was to scale the same logic to multiple brands without losing any of their individual identities."
+      },
+      strategy:{
+        pt:'Participei das reuniões de alinhamento desde o início para entender a mecânica do programa: como os afiliados ganham, o que precisam mostrar, como funciona a curadoria. Com isso, estruturei a arquitetura das páginas em wireframe primeiro — definindo as seções essenciais (proposta de valor, benefícios, como funciona, requisitos, formulário) antes de qualquer decisão visual. Depois de aprovada a estrutura, recebia o brandbook de cada marca e adaptava a identidade visual mantendo o fluxo consistente. As páginas e os formulários foram entregues em HTML, prontos para integração.',
+        en:"I participated in alignment meetings from the start to understand the program mechanics: how affiliates earn, what they need to demonstrate, how curation works. With this, I structured the page architecture in wireframe first — defining the essential sections (value proposition, benefits, how it works, requirements, form) before any visual decision. After the structure was approved, I received each brand's brandbook and adapted the visual identity while keeping the flow consistent. Pages and forms were delivered in HTML, ready for integration."
+      },
+      steps:[
+        {
+          n:'01',
+          t:{pt:'Imersão no Programa',    en:'Program Immersion'},
+          d:{
+            pt:'Reuniões para entender a mecânica completa do programa de afiliados: modelo de performance, perfis de creators aceitos, comissões, processo de curadoria e calendário de ativações (Dia das Mães, etc.).',
+            en:'Meetings to understand the complete affiliate program mechanics: performance model, accepted creator profiles, commissions, curation process and activation calendar (Mother\'s Day, etc.).'
+          }
+        },
+        {
+          n:'02',
+          t:{pt:'Wireframe & Estrutura',  en:'Wireframe & Structure'},
+          d:{
+            pt:'Criação do wireframe com todas as seções da página — proposta de valor, benefícios, como funciona o programa, perfis aceitos, perguntas frequentes e formulário de captação. Estrutura validada antes de qualquer aplicação visual.',
+            en:'Creation of the wireframe covering all page sections — value proposition, benefits, how the program works, accepted profiles, FAQ and capture form. Structure validated before any visual application.'
+          }
+        },
+        {
+          n:'03',
+          t:{pt:'Adaptação por Marca',    en:'Brand Adaptation'},
+          d:{
+            pt:'Recebimento progressivo dos brandbooks de cada marca (Dolce Gusto, Kopenhagen, Nespresso, Nestlé, Nestlé Health Science) e adaptação da identidade visual — tipografia, cores, tom e imagens — mantendo o fluxo e a estrutura consistentes.',
+            en:'Progressive receipt of each brand\'s brandbook (Dolce Gusto, Kopenhagen, Nespresso, Nestlé, Nestlé Health Science) and visual identity adaptation — typography, colors, tone and images — keeping the flow and structure consistent.'
+          }
+        },
+        {
+          n:'04',
+          t:{pt:'Entrega & Ativação',     en:'Delivery & Activation'},
+          d:{
+            pt:'Entrega das landing pages e formulários em HTML, prontos para integração. Primeira ativação no Dia das Mães com resultado positivo de vendas — números sob confidencialidade contratual.',
+            en:'Delivery of landing pages and forms in HTML, ready for integration. First activation on Mother\'s Day with positive sales results — figures under contractual confidentiality.'
+          }
+        }
+      ],
+      procImg1:'landing page/wireframe - site.jpg',
+      procImg2:'landing page/tela de site - final para usar.gif',
+      img1bg:'linear-gradient(135deg,#2a0000,#5c0000)',
+      img2bg:'linear-gradient(135deg,#1a0a00,#4a1500)'
+    },
+
+    /* ── 03 · STARBUCKS × DISNEY ── */
+    {
+      num:'03', badge:'#00704A', badgeTxt:'#fff',
+      client:'Starbucks Brasil × Disney',
+      cat:{pt:'Design Gráfico · Impresso', en:'Graphic Design · Print'},
+      year:'2026',
+      title:{pt:'O Diabo Veste Prada 2', en:'The Devil Wears Prada 2'},
+      short:{
+        pt:'Arte impressa para carrinhos da campanha Starbucks × Disney sobre o filme — aprovada pelos times das duas marcas e presente em empresas como Vogue, Glamour, TikTok e ESPN.',
+        en:'Print artwork for Starbucks × Disney campaign carts for the film — approved by both brands\' teams and present at companies like Vogue, Glamour, TikTok and ESPN.'
+      },
+      bg:'linear-gradient(145deg,#1a0808,#6b1010)',
+      imgSrc:'Impresso Starbucks/CAPA.jpeg',
+      heroImgSrc:'Impresso Starbucks/CAPA.jpeg',
+      metrics:[
+        {v:'7+', l:{pt:'Empresas parceiras',       en:'Partner companies'}},
+        {v:'2',  l:{pt:'Marcas aprovadoras',        en:'Approving brands'}},
+        {v:'↗',  l:{pt:'Arte em produção física',   en:'Physical production'}}
+      ],
+      challenge:{
+        pt:'Como criar uma arte impressa para carrinho de serviço que equilibrasse duas identidades visuais iconicamente distintas — o verde e a sereia da Starbucks, o vermelho veludo e a dramaturgia do filme — sem sobrepor nenhuma delas? A arte precisava passar pela aprovação dos times de criação da Starbucks e da Disney, e ser suficientemente impactante para representar ambas as marcas nos escritórios de parceiros de alto perfil.',
+        en:"How to create print artwork for a service cart that balanced two iconically distinct visual identities — Starbucks' green and siren, the velvet red and drama of the film — without overlapping either? The artwork needed to pass approval from Starbucks and Disney's creative teams, and be impactful enough to represent both brands at high-profile partner offices."
+      },
+      strategy:{
+        pt:'A composição foi construída a partir da tensão deliberada entre os dois universos: o off-white sofisticado do fundo como terreno neutro, o veludo vermelho dramático do filme criando movimento e luxo, e os elementos da Starbucks (logo, produtos, tipografia verde) âncorando a identidade da marca. A tagline "Nova Era. Mesmos Ícones." já havia sido definida — o trabalho foi dar corpo visual a essa ideia em formato impresso para carrinho, dentro dos brandbooks de ambas as marcas.',
+        en:"The composition was built from the deliberate tension between the two universes: the sophisticated off-white background as neutral ground, the film's dramatic red velvet creating movement and luxury, and Starbucks elements (logo, products, green typography) anchoring the brand identity. The tagline 'Nova Era. Mesmos Ícones.' had already been defined — the work was to give visual form to this idea in print format for the cart, within both brands' brandbooks."
+      },
+      steps:[
+        {
+          n:'01',
+          t:{pt:'Briefing & Imersão',      en:'Briefing & Immersion'},
+          d:{pt:'Entendimento da mecânica da campanha, dos parceiros de destino e das restrições de identidade visual de Starbucks e Disney. Alinhamento da hierarquia visual entre as duas marcas.',en:"Understanding of the campaign mechanics, destination partners and visual identity restrictions for Starbucks and Disney. Alignment of visual hierarchy between both brands."}
+        },
+        {
+          n:'02',
+          t:{pt:'Desenvolvimento da Arte', en:'Artwork Development'},
+          d:{pt:'Criação da composição visual para impressão no carrinho — equilibrando brandbooks distintos, dramaturgia do filme, hierarquia de informação e legibilidade em formato físico de longa distância.',en:'Creation of the visual composition for cart printing — balancing distinct brandbooks, film drama, information hierarchy and legibility in physical long-distance format.'}
+        },
+        {
+          n:'03',
+          t:{pt:'Aprovação Multi-instância', en:'Multi-instance Approval'},
+          d:{pt:'Arte submetida e aprovada pelos times de criação da Starbucks e da Disney antes da produção física. Processo de revisão com ajustes de identidade e adequação às diretrizes de cada marca.',en:"Artwork submitted and approved by Starbucks' and Disney's creative teams before physical production. Review process with identity adjustments and compliance with each brand's guidelines."}
+        },
+        {
+          n:'04',
+          t:{pt:'Distribuição',             en:'Distribution'},
+          d:{pt:'Carrinhos enviados para parceiros estratégicos: Zamp (Burger King, Subway, Popeyes e Starbucks), Steal the Look, Disney, TikTok, Vogue, Glamour e ESPN.',en:'Carts sent to strategic partners: Zamp (Burger King, Subway, Popeyes and Starbucks), Steal the Look, Disney, TikTok, Vogue, Glamour and ESPN.'}
+        }
+      ],
+      procImg1:'Impresso Starbucks/WhatsApp Image 2026-04-16 at 14.36.18.jpeg',
+      procImg2:'Impresso Starbucks/WhatsApp Image 2026-04-30 at 14.47.54.jpeg',
+      img1bg:'linear-gradient(135deg,#0a1a0a,#003020)',
+      img2bg:'linear-gradient(135deg,#1a0a0a,#3a1010)'
+    },
+
+    /* ── 04 · SEASONS ── */
+    {
+      num:'04', badge:'#1C1208', badgeTxt:'#F5EDD5',
+      client:'Seasons Concept',
+      cat:{pt:'Brand Identity · Visual Identity', en:'Brand Identity · Visual Identity'},
+      year:'2025',
+      title:{pt:'Seasons Concept', en:'Seasons Concept'},
+      short:{
+        pt:'Identidade visual para instituto de beleza em reposicionamento — do conceito de fases e ciclos ao símbolo que virou arquitetura, uniforme e sinalização.',
+        en:'Visual identity for a beauty institute in repositioning — from the concept of phases and cycles to a symbol that became architecture, uniform and signage.'
+      },
+      bg:'linear-gradient(145deg,#1c1208,#3a2a18)',
+      imgSrc:'Identidade visual - SEASONS/CAPA.jpg',
+      heroImgSrc:'Identidade visual - SEASONS/CAPA.jpg',
+      metrics:[
+        {v:'360°', l:{pt:'Sistema visual aplicado',     en:'Visual system applied'}},
+        {v:'3D',   l:{pt:'Sinalização arquitetônica',   en:'Architectural signage'}},
+        {v:'↑',    l:{pt:'Salão → Instituto de beleza', en:'Salon → Beauty institute'}}
+      ],
+      challenge:{
+        pt:'Como criar uma identidade visual capaz de comunicar uma virada de fase real — de salão para instituto de beleza — sem alienar a clientela existente e ao mesmo tempo atraindo um público mais premium? O novo nome SEASONS já existia, mas precisava de uma linguagem visual que transformasse uma palavra em conceito de marca, e esse conceito em um sistema aplicável do logo à arquitetura do espaço.',
+        en:"How to create a visual identity capable of communicating a real phase change — from salon to beauty institute — without alienating the existing clientele while attracting a more premium audience? The new name SEASONS already existed, but needed a visual language that transformed a word into a brand concept, and that concept into a system applicable from the logo to the space's architecture."
+      },
+      strategy:{
+        pt:'A chave foi encontrar o conceito dentro do próprio nome. SEASONS carrega naturalmente a ideia de temporadas, fases, ciclos — e foi daí que surgiu o símbolo: um arco orgânico que substitui o "O" no logotipo, referência visual direta às fases da lua e às estações do ano, sem ser literal. Com o conceito aprovado, o sistema foi desdobrado para além do papel: sinalização 3D suspensa na arquitetura do espaço, uniformes da equipe com o símbolo em escala decorativa, e aplicações institucionais que transformaram a virada de marca em experiência física.',
+        en:"The key was finding the concept within the name itself. SEASONS naturally carries the idea of seasons, phases, cycles — and that's where the symbol emerged: an organic arc that replaces the 'O' in the logotype, a direct visual reference to lunar phases and seasons without being literal. With the concept approved, the system was unfolded beyond paper: 3D suspended signage in the space's architecture, team uniforms with the symbol at decorative scale, and institutional applications that transformed the brand shift into a physical experience."
+      },
+      steps:[
+        {
+          n:'01',
+          t:{pt:'Imersão & Conceito',       en:'Immersion & Concept'},
+          d:{pt:'Reuniões para entender o histórico da marca, a mudança de posicionamento de salão para instituto e o que o cliente queria comunicar com o novo nome. Extração do conceito de fases e ciclos como eixo criativo.',en:"Meetings to understand the brand's history, the repositioning shift from salon to institute and what the client wanted to communicate with the new name. Extraction of the phases and cycles concept as the creative axis."}
+        },
+        {
+          n:'02',
+          t:{pt:'Desenvolvimento do Logo',  en:'Logo Development'},
+          d:{pt:'Criação e refinamento do símbolo orgânico que substitui o "O" em SEASONS — arco inspirado nas fases da lua. Sugestão de variações e processo de aprovação com o cliente.',en:'Creation and refinement of the organic symbol replacing the "O" in SEASONS — arc inspired by lunar phases. Suggestion of variations and client approval process.'}
+        },
+        {
+          n:'03',
+          t:{pt:'Sistema Visual',           en:'Visual System'},
+          d:{pt:'Com o logo aprovado: desenvolvimento da paleta, tipografia complementar, padrões de uso e diretrizes de aplicação. Sistema construído para funcionar do digital ao físico tridimensional.',en:'With the logo approved: development of the color palette, complementary typography, usage patterns and application guidelines. System built to function from digital to three-dimensional physical.'}
+        },
+        {
+          n:'04',
+          t:{pt:'Aplicação & Desdobramento',en:'Application & Unfolding'},
+          d:{pt:'Implementação nos pontos de contato do espaço físico: logo em letra caulim na recepção, escultura 3D suspensa do símbolo na arquitetura, uniformes da equipe e materiais institucionais.',en:'Implementation at the physical space touchpoints: logo in raised letters at reception, suspended 3D sculptural symbol in the architecture, team uniforms and institutional materials.'}
+        }
+      ],
+      procImg1:'Identidade visual - SEASONS/Prancheta 3.jpg',
+      procImg2:'Identidade visual - SEASONS/Prancheta 5.jpg',
+      img1bg:'linear-gradient(135deg,#0a0a08,#1c1810)',
+      img2bg:'linear-gradient(135deg,#141008,#2a2018)'
+    }
+  ]
+};
+
+/* ── FACE ANIMATION ── */
+(function(){
+  var frames = document.querySelectorAll('.face-frame');
+  var cur = 0;
+  setInterval(function(){
+    frames[cur].classList.remove('active');
+    cur = (cur + 1) % frames.length;
+    frames[cur].classList.add('active');
+  }, 220);
+})();
+
+/* ── CARD RENDER ── */
+function cardHTML(sec, idx, p) {
+  var cat = p.cat[lang], title = p.title[lang], sh = p.short[lang];
+  var mets = p.metrics.map(function(m){
+    return '<div class="mi2"><span class="mv">'+m.v+'</span><span class="ml">'+m.l[lang]+'</span></div>';
+  }).join('');
+  var ovb = lang === 'pt' ? 'VER CASE →' : 'VIEW CASE →';
+  var bgContent = p.imgSrc ? '<img src="'+p.imgSrc+'" alt="'+title+'">' : '';
+  return '<div class="cc" onclick="openModal(\''+sec+'\','+idx+')">'
+    +'<div class="ci"><div class="cbg" style="background:'+p.bg+'">'+bgContent+'</div>'
+    +'<div class="cov"><div class="covb">'+ovb+'</div></div>'
+    +'<div class="cbadge" style="background:'+p.badge+';color:'+p.badgeTxt+'">CASE '+p.num+'</div></div>'
+    +'<div class="ct"><p class="cm">'+p.client+' · '+cat+' · '+p.year+'</p>'
+    +'<h3 class="ctit">'+title+'</h3><p class="cd">'+sh+'</p>'
+    +'<div class="mr">'+mets+'</div></div></div>';
+}
+
+function renderGrid(id, sec, arr) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = arr.length ? arr.map(function(p,i){ return cardHTML(sec,i,p); }).join('') : '';
+}
+
+function renderAll() {
+  renderGrid('home-grid', 'featured', P.featured);
+}
+
+/* ── MODAL ── */
+function openModal(sec, idx) {
+  var p = P[sec][idx];
+  curModal = {sec:sec, idx:idx};
+  var title = p.title[lang], cat = p.cat[lang];
+  var chl = lang==='pt' ? 'O DESAFIO'       : 'THE CHALLENGE';
+  var stl = lang==='pt' ? 'A ABORDAGEM'     : 'THE APPROACH';
+  var prl = lang==='pt' ? 'O PROCESSO'      : 'THE PROCESS';
+  var pvl = lang==='pt' ? 'PROCESSO VISUAL' : 'VISUAL PROCESS';
+  var iph = lang==='pt' ? 'Imagem do processo' : 'Process image';
+  var mets = p.metrics.map(function(m){
+    return '<div class="mm"><span class="mv">'+m.v+'</span><span class="ml">'+m.l[lang]+'</span></div>';
+  }).join('');
+  var steps = p.steps.map(function(s){
+    return '<div class="pst2"><div class="psn">'+s.n+'</div><div class="pstit">'+s.t[lang]+'</div><div class="psd">'+s.d[lang]+'</div></div>';
+  }).join('');
+  var heroBg  = p.heroImgSrc ? '' : 'background:'+p.bg;
+  var heroImg = p.heroImgSrc ? '<img src="'+p.heroImgSrc+'" alt="'+title+'">' : '';
+  var p1 = p.procImg1 ? '<img src="'+p.procImg1+'" alt="process">' : iph;
+  var p2 = p.procImg2 ? '<img src="'+p.procImg2+'" alt="process">' : iph;
+  var p1bg = p.procImg1 ? '' : p.img1bg;
+  var p2bg = p.procImg2 ? '' : p.img2bg;
+  document.getElementById('mscroll').innerHTML =
+    '<div class="mh" style="'+heroBg+';min-height:280px"><div class="mhbg">'+heroImg+'</div>'
+    +'<div class="mho"></div><div class="mhc">'
+    +'<div class="mbadge" style="background:'+p.badge+';color:'+p.badgeTxt+'">CASE '+p.num+'</div>'
+    +'<p class="mcl">'+p.client+' · '+cat+' · '+p.year+'</p>'
+    +'<h2 class="mtit">'+title+'</h2></div></div>'
+    +'<div class="mbody"><div class="mmet">'+mets+'</div>'
+    +'<p class="msl">'+chl+'</p><p class="mtxt">'+p.challenge[lang]+'</p>'
+    +'<p class="msl">'+stl+'</p><p class="mtxt">'+p.strategy[lang]+'</p>'
+    +'<p class="msl">'+prl+'</p><div class="ps">'+steps+'</div>'
+    +'<p class="msl" style="margin-top:32px">'+pvl+'</p>'
+    +'<div class="pimgs">'
+    +'<div class="pimg" style="background:'+p1bg+'">'+p1+'</div>'
+    +'<div class="pimg" style="background:'+p2bg+'">'+p2+'</div>'
+    +'</div></div>';
+  document.getElementById('mscroll').scrollTop = 0;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+  curModal = null;
+}
+function handleBdClick(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+
+/* ── LANGUAGE ── */
+function setLang(l) {
+  lang = l;
+  document.querySelectorAll('.lb').forEach(function(b){
+    b.classList.toggle('active', b.textContent.toLowerCase() === l);
+  });
+  document.querySelectorAll('[data-pt]').forEach(function(el){
+    var t = el.getAttribute('data-'+l);
+    if (t) el.innerHTML = t;
+  });
+  document.querySelectorAll('[data-placeholder-pt]').forEach(function(el){
+    var ph = el.getAttribute('data-placeholder-'+l);
+    if (ph) el.placeholder = ph;
+  });
+  renderAll();
+  if (curModal) openModal(curModal.sec, curModal.idx);
+}
+
+/* ── MOBILE MENU ── */
+function toggleMob() {
+  var m = document.getElementById('mobMenu');
+  var h = document.getElementById('ham');
+  var o = m.classList.toggle('open');
+  h.classList.toggle('open', o);
+  document.body.style.overflow = o ? 'hidden' : '';
+}
+function closeMob() {
+  document.getElementById('mobMenu').classList.remove('open');
+  document.getElementById('ham').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── CONTACT FORM — SEND EMAIL ── */
+function sendContactForm() {
+  var nome  = document.getElementById('f-nome').value.trim();
+  var email = document.getElementById('f-email').value.trim();
+  var tipo  = document.getElementById('f-tipo').value;
+  var desc  = document.getElementById('f-desc').value.trim();
+
+  if (!nome || !email || !tipo || !desc) {
+    var msg = lang === 'pt' ? 'Por favor, preencha todos os campos.' : 'Please fill in all fields.';
+    alert(msg);
+    return false;
+  }
+
+  var subject = encodeURIComponent('Orçamento — ' + tipo + ' | ' + nome);
+  var body = encodeURIComponent(
+    'Nome: ' + nome + '\n' +
+    'E-mail: ' + email + '\n' +
+    'Tipo de projeto: ' + tipo + '\n\n' +
+    'Mensagem:\n' + desc
+  );
+
+  window.location.href = 'mailto:joao.victor.s2201@gmail.com?subject=' + subject + '&body=' + body;
+
+  // Visual feedback
+  var btn = document.querySelector('.cf-btn');
+  var original = btn.textContent;
+  btn.textContent = lang === 'pt' ? 'Abrindo seu e-mail… ✓' : 'Opening your email… ✓';
+  btn.style.background = 'var(--g)';
+  setTimeout(function(){ btn.textContent = original; btn.style.background = ''; }, 3500);
+
+  return false;
+}
+
+/* ── KEYBOARD ── */
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') closeModal();
+});
+
+/* ── NAV SHADOW ON SCROLL ── */
+window.addEventListener('scroll', function(){
+  document.getElementById('mainNav').style.boxShadow =
+    window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,.08)' : 'none';
+});
+
+/* ── PHOTO REVEAL — FOLLOWS MOUSE ── */
+(function(){
+  var wrap  = document.getElementById('faceWrap');
+  var photo = document.querySelector('.face-photo');
+  var SIZE  = 140;
+
+  wrap.addEventListener('mousemove', function(e){
+    var rect = wrap.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+    photo.style.opacity = 1;
+    var mask = 'radial-gradient(circle '+SIZE+'px at '+x+'px '+y+'px, #000 99%, transparent 100%)';
+    photo.style.webkitMaskImage = mask;
+    photo.style.maskImage = mask;
+  });
+
+  wrap.addEventListener('mouseleave', function(){
+    photo.style.opacity = 0;
+    var reset = 'radial-gradient(circle 0px at center, #000 100%, transparent 100%)';
+    photo.style.webkitMaskImage = reset;
+    photo.style.maskImage = reset;
+  });
+})();
+
+renderAll();
+</script>
+</body>
+</html>
