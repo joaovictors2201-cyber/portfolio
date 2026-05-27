@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>João Victor — Designer Estratégico</title>
+<title>João Victor — UX Designer</title>
 <link rel="icon" type="image/svg+xml" href="SVG/icon-portfólio.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -248,6 +248,19 @@ footer{background:#080808;border-top:2px solid #1a1a1a;padding:28px 52px;display
 .exp-desc li{font-size:.85rem;color:#444;line-height:1.72;padding:2px 0 2px 20px;position:relative}
 .exp-desc li::before{content:'';position:absolute;left:0;top:12px;width:10px;height:2px;background:var(--y)}
 
+/* ── CASE FILTER ── */
+.case-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.cf-tab{font-family:var(--ss);font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 20px;border:2px solid var(--bk);background:transparent;color:var(--bk);cursor:pointer;border-radius:100px;transition:all .22s}
+.cf-tab.active{background:var(--bk);color:var(--wh)}
+.cf-tab:hover:not(.active){background:var(--y);border-color:var(--y)}
+
+/* ── AVAILABILITY CTA ── */
+.avail-cta{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.12);border-radius:10px;padding:22px 24px;margin-bottom:28px}
+.avail-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--g);margin-right:8px;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+.avail-label{font-size:.6rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin-bottom:10px;display:flex;align-items:center}
+.avail-p{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.7}
+
 /* ── BEHANCE CTA ── */
 .behance-cta{padding:52px 0 0;margin-top:12px;border-top:1px solid var(--lt);display:flex;flex-direction:column;align-items:center;gap:16px}
 .behance-cta-label{font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--md)}
@@ -325,16 +338,16 @@ footer{background:#080808;border-top:2px solid #1a1a1a;padding:28px 52px;display
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-left">
-    <p class="hero-tag an d1" data-pt="Designer Estratégico · UX Designer" data-en="Strategic Designer · UX Designer">Designer Estratégico · UX Designer</p>
+    <p class="hero-tag an d1" data-pt="UX Designer · Product Designer" data-en="UX Designer · Product Designer">UX Designer · Product Designer</p>
     <h1 class="hero-h an d2"
-        data-pt='Não faço bonito<br>por acidente.<br><em>Faço estratégico<br>de propósito.</em>'
-        data-en='I don&apos;t make<br>beautiful by accident.<br><em>I make strategic<br>on purpose.</em>'>
-      Não faço bonito<br>por acidente.<br><em>Faço estratégico<br>de propósito.</em>
+        data-pt='Não começo<br>pela tela.<br><em>Começo pelo<br>problema.</em>'
+        data-en='I don&apos;t start<br>with the screen.<br><em>I start with<br>the problem.</em>'>
+      Não começo<br>pela tela.<br><em>Começo pelo<br>problema.</em>
     </h1>
     <p class="hero-sub an d3"
-       data-pt="João Victor — designer que começa pelo problema, não pela tela."
-       data-en="João Victor — designer who starts with the problem, not the screen.">
-      João Victor — designer que começa pelo problema, não pela tela.
+       data-pt="João Victor — UX Designer e Product Designer que transforma pesquisa em produto navegável."
+       data-en="João Victor — UX Designer and Product Designer who turns research into navigable product.">
+      João Victor — UX Designer e Product Designer que transforma pesquisa em produto navegável.
     </p>
     <div class="hero-ctas an d4">
       <a class="btn-dk" href="#cases" data-pt="Ver Cases →" data-en="See Cases →">Ver Cases →</a>
@@ -362,20 +375,26 @@ footer{background:#080808;border-top:2px solid #1a1a1a;padding:28px 52px;display
 <!-- ══ TICKER ══ -->
 <div id="ticker">
   <div class="tick-inner">
-    <span class="tick-item">Brand Identity</span><span class="tick-item">✦</span>
-    <span class="tick-item">UX/UI Design</span><span class="tick-item">✦</span>
-    <span class="tick-item">Graphic Design</span><span class="tick-item">✦</span>
-    <span class="tick-item">Illustration</span><span class="tick-item">✦</span>
-    <span class="tick-item">Strategic Thinking</span><span class="tick-item">✦</span>
-    <span class="tick-item">Visual Identity</span><span class="tick-item">✦</span>
-    <span class="tick-item">Art Direction</span><span class="tick-item">✦</span>
-    <span class="tick-item">Brand Identity</span><span class="tick-item">✦</span>
-    <span class="tick-item">UX/UI Design</span><span class="tick-item">✦</span>
-    <span class="tick-item">Graphic Design</span><span class="tick-item">✦</span>
-    <span class="tick-item">Illustration</span><span class="tick-item">✦</span>
-    <span class="tick-item">Strategic Thinking</span><span class="tick-item">✦</span>
-    <span class="tick-item">Visual Identity</span><span class="tick-item">✦</span>
-    <span class="tick-item">Art Direction</span><span class="tick-item">✦</span>
+    <span class="tick-item">UX Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Product Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Wireframing</span><span class="tick-item">✦</span>
+    <span class="tick-item">Prototipagem</span><span class="tick-item">✦</span>
+    <span class="tick-item">Arquitetura de Informação</span><span class="tick-item">✦</span>
+    <span class="tick-item">Discovery</span><span class="tick-item">✦</span>
+    <span class="tick-item">Design System</span><span class="tick-item">✦</span>
+    <span class="tick-item">UI Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Handoff</span><span class="tick-item">✦</span>
+    <span class="tick-item">HTML / CSS</span><span class="tick-item">✦</span>
+    <span class="tick-item">UX Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Product Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Wireframing</span><span class="tick-item">✦</span>
+    <span class="tick-item">Prototipagem</span><span class="tick-item">✦</span>
+    <span class="tick-item">Arquitetura de Informação</span><span class="tick-item">✦</span>
+    <span class="tick-item">Discovery</span><span class="tick-item">✦</span>
+    <span class="tick-item">Design System</span><span class="tick-item">✦</span>
+    <span class="tick-item">UI Design</span><span class="tick-item">✦</span>
+    <span class="tick-item">Handoff</span><span class="tick-item">✦</span>
+    <span class="tick-item">HTML / CSS</span><span class="tick-item">✦</span>
   </div>
 </div>
 
@@ -392,27 +411,27 @@ footer{background:#080808;border-top:2px solid #1a1a1a;padding:28px 52px;display
     <img src="612c2933-8dfe-47ec-97c8-37e93523e873.jpg" alt="João Victor">
   </div>
   <div>
-    <p class="bio-tag" data-pt="Designer Estratégico · Sobre Mim" data-en="Strategic Designer · About Me">Designer Estratégico · Sobre Mim</p>
-    <h2 class="bio-h" data-pt="Design com propósito,<br>estratégia com olhar." data-en="Design with purpose,<br>strategy with vision.">Design com propósito,<br>estratégia com olhar.</h2>
+    <p class="bio-tag" data-pt="UX Designer · Sobre Mim" data-en="UX Designer · About Me">UX Designer · Sobre Mim</p>
+    <h2 class="bio-h" data-pt="Do problema ao produto —<br>sem pular etapas." data-en="From problem to product —<br>no steps skipped.">Do problema ao produto —<br>sem pular etapas.</h2>
     <p class="bio-p"
-       data-pt="Sou João Victor, Designer com mais de 6 anos de experiência em direção de arte, identidade de marca e campanhas digitais. Ao longo da minha trajetória, desenvolvi mais de 300 ativos criativos para TV, digital e impresso, atendendo marcas como Grupo Bandeirantes, C6 Bank, Red Bull e Stone."
-       data-en="I'm João Victor, a Designer with over 6 years of experience in art direction, brand identity and digital campaigns. Throughout my career, I developed over 300 creative assets for TV, digital and print, serving brands like Grupo Bandeirantes, C6 Bank, Red Bull and Stone.">
-      Sou João Victor, Designer com mais de 6 anos de experiência em direção de arte, identidade de marca e campanhas digitais. Ao longo da minha trajetória, desenvolvi mais de 300 ativos criativos para TV, digital e impresso, atendendo marcas como Grupo Bandeirantes, C6 Bank, Red Bull e Stone.
+       data-pt="Sou João Victor, UX Designer e Product Designer com 6+ anos de experiência — começo pelo problema, não pela tela."
+       data-en="I'm João Victor, UX Designer and Product Designer with 6+ years of experience — I start with the problem, not the screen.">
+      Sou João Victor, UX Designer e Product Designer com 6+ anos de experiência — começo pelo problema, não pela tela.
     </p>
     <p class="bio-p"
-       data-pt="A virada para UX foi uma consequência natural de sempre ter começado pelos fluxos antes de ir para os pixels. No desenvolvimento da plataforma mobile de afiliados da Nestlé, conduzi o processo completo de produto: discovery com stakeholders, arquitetura de informação, wireframes validados, duas versões de interface e um protótipo navegável testado com usuários reais. Na Publination, essa frente se consolidou — passei a liderar o UX/UI de plataformas web responsivas e landing pages para marcas."
-       data-en="The shift to UX was a natural consequence of always starting with flows before pixels. In developing Nestlé's mobile affiliate platform, I led the complete product process: stakeholder discovery, information architecture, validated wireframes, two interface versions and a navigable prototype tested with real users. At Publination, this front consolidated — I took on UX/UI for responsive web platforms and landing pages for brands.">
-      A virada para UX foi uma consequência natural de sempre ter começado pelos fluxos antes de ir para os pixels. No desenvolvimento da plataforma mobile de afiliados da Nestlé, conduzi o processo completo de produto: discovery com stakeholders, arquitetura de informação, wireframes validados, duas versões de interface e um protótipo navegável testado com usuários reais. Na Publination, essa frente se consolidou — passei a liderar o UX/UI de plataformas web responsivas e landing pages para marcas.
+       data-pt="Na Nestlé Brasil, conduzi o processo completo de product design: discovery com stakeholders, arquitetura de informação, wireframes validados com o time, duas versões de interface e um protótipo navegável testado com usuários reais. Na Publination, lidero o UX/UI de plataformas web responsivas e landing pages para Boticário, FIAT, Nespresso e Burger King — do wireframe ao handoff com dev, com entregas em HTML prontas para integração."
+       data-en="At Nestlé Brasil, I led the complete product design process: stakeholder discovery, information architecture, wireframes validated with the team, two interface versions and a navigable prototype tested with real users. At Publination, I lead UX/UI for responsive web platforms and landing pages for Boticário, FIAT, Nespresso and Burger King — from wireframe to dev handoff, with HTML deliverables ready for integration.">
+      Na Nestlé Brasil, conduzi o processo completo de product design: discovery com stakeholders, arquitetura de informação, wireframes validados com o time, duas versões de interface e um protótipo navegável testado com usuários reais. Na Publination, lidero o UX/UI de plataformas web responsivas e landing pages para Boticário, FIAT, Nespresso e Burger King — do wireframe ao handoff com dev, com entregas em HTML prontas para integração.
     </p>
     <p class="bio-p"
-       data-pt="Meu trabalho vai além da estética — acredito que um bom design conta histórias, conecta pessoas e fortalece marcas. Seja desenvolvendo Key Visuals para campanhas de alto impacto, construindo identidades que migram do papel para a arquitetura física, ou desdobrando sistemas visuais para múltiplos canais, meu foco está sempre em traduzir estratégia em resultado visual com propósito."
-       data-en="My work goes beyond aesthetics — I believe good design tells stories, connects people and strengthens brands. Whether developing Key Visuals for high-impact campaigns, building identities that migrate from paper to physical architecture, or unfolding visual systems for multiple channels, my focus is always on translating strategy into purposeful visual results.">
-      Meu trabalho vai além da estética — acredito que um bom design conta histórias, conecta pessoas e fortalece marcas. Seja desenvolvendo Key Visuals para campanhas de alto impacto, construindo identidades que migram do papel para a arquitetura física, ou desdobrando sistemas visuais para múltiplos canais, meu foco está sempre em traduzir estratégia em resultado visual com propósito.
+       data-pt="Antes de focar em produto, construí uma base sólida em sistemas visuais e direção de arte: +300 ativos para 8 canais simultâneos no Grupo Bandeirantes, Key Visuals para C6 Bank e Red Bull, e pioneirismo no uso de IA no fluxo de trabalho criativo. Esse histórico me dá uma vantagem real em UX — executo com precisão visual enquanto penso em sistema e em usuário."
+       data-en="Before focusing on product, I built a solid foundation in visual systems and art direction: 300+ assets for 8 simultaneous channels at Grupo Bandeirantes, Key Visuals for C6 Bank and Red Bull, and early adoption of AI in the creative workflow. That background gives me a real advantage in UX — I execute with visual precision while thinking in systems and in user terms.">
+      Antes de focar em produto, construí uma base sólida em sistemas visuais e direção de arte: +300 ativos para 8 canais simultâneos no Grupo Bandeirantes, Key Visuals para C6 Bank e Red Bull, e pioneirismo no uso de IA no fluxo de trabalho criativo. Esse histórico me dá uma vantagem real em UX — executo com precisão visual enquanto penso em sistema e em usuário.
     </p>
     <p class="bio-p"
-       data-pt="Com MBA em Marketing Estratégico e duas especializações em andamento — Design Centrado no Usuário pela PUCRS e Programação pela EBAC — uno visão criativa, pensamento de produto e lógica de negócio para entregar soluções que funcionam tanto para o usuário quanto para o mercado."
-       data-en="With an MBA in Strategic Marketing and two specializations underway — User-Centered Design from PUCRS and Programming from EBAC — I combine creative vision, product thinking and business logic to deliver solutions that work for both the user and the market.">
-      Com MBA em Marketing Estratégico e duas especializações em andamento — Design Centrado no Usuário pela PUCRS e Programação pela EBAC — uno visão criativa, pensamento de produto e lógica de negócio para entregar soluções que funcionam tanto para o usuário quanto para o mercado.
+       data-pt="MBA em Marketing Estratégico. Especializações em andamento: Design Centrado no Usuário (PUCRS) e Programação (EBAC)."
+       data-en="MBA in Strategic Marketing. Specializations underway: User-Centered Design (PUCRS) and Programming (EBAC).">
+      MBA em Marketing Estratégico. Especializações em andamento: Design Centrado no Usuário (PUCRS) e Programação (EBAC).
     </p>
   </div>
 </section>
@@ -422,6 +441,11 @@ footer{background:#080808;border-top:2px solid #1a1a1a;padding:28px 52px;display
   <div class="sec-head">
     <h2 class="sec-h" data-pt="Cases e Projetos" data-en="Cases & Projects">Cases e Projetos</h2>
     <span class="sec-tag" data-pt="Seleção de trabalhos" data-en="Selected works">Seleção de trabalhos</span>
+  </div>
+  <div class="case-filter">
+    <button class="cf-tab active" onclick="setFilter('produto')" data-pt="Produto" data-en="Product">Produto</button>
+    <button class="cf-tab" onclick="setFilter('marca')" data-pt="Marca" data-en="Brand">Marca</button>
+    <button class="cf-tab" onclick="setFilter('todos')" data-pt="Todos" data-en="All">Todos</button>
   </div>
   <div class="cg" id="home-grid"></div>
   <div class="behance-cta">
@@ -517,15 +541,24 @@ footer{background:#080808;border-top:2px solid #1a1a1a;padding:28px 52px;display
 <!-- ══ SKILLS ══ -->
 <section id="skills">
   <div class="skills-pills">
-    <span class="pill" data-pt="Identidade Visual"              data-en="Visual Identity">Identidade Visual</span>
     <span class="pill" data-pt="UX/UI Design"                  data-en="UX/UI Design">UX/UI Design</span>
-    <span class="pill" data-pt="Brand Strategy"                data-en="Brand Strategy">Brand Strategy</span>
-    <span class="pill" data-pt="Design Gráfico"                data-en="Graphic Design">Design Gráfico</span>
-    <span class="pill" data-pt="Ilustração"                    data-en="Illustration">Ilustração</span>
+    <span class="pill" data-pt="Product Design"                data-en="Product Design">Product Design</span>
+    <span class="pill" data-pt="Wireframing"                   data-en="Wireframing">Wireframing</span>
+    <span class="pill" data-pt="Prototipagem"                  data-en="Prototyping">Prototipagem</span>
+    <span class="pill" data-pt="Arquitetura de Informação"     data-en="Information Architecture">Arquitetura de Informação</span>
+    <span class="pill" data-pt="Discovery"                     data-en="Discovery">Discovery</span>
     <span class="pill" data-pt="Design System"                 data-en="Design System">Design System</span>
-    <span class="pill" data-pt="Design Editorial"              data-en="Editorial Design">Design Editorial</span>
+    <span class="pill" data-pt="Handoff"                       data-en="Handoff">Handoff</span>
+    <span class="pill" data-pt="HTML/CSS"                      data-en="HTML/CSS">HTML/CSS</span>
+    <span class="pill" data-pt="Inteligência Artificial"       data-en="Artificial Intelligence">Inteligência Artificial</span>
+    <span class="pill" data-pt="Design Estratégico"            data-en="Strategic Design">Design Estratégico</span>
+    <span class="pill" data-pt="Identidade Visual"             data-en="Visual Identity">Identidade Visual</span>
     <span class="pill" data-pt="Direção de Arte"               data-en="Art Direction">Direção de Arte</span>
+    <span class="pill" data-pt="Brand Strategy"                data-en="Brand Strategy">Brand Strategy</span>
     <span class="pill" data-pt="Apresentação Comercial"        data-en="Pitch Deck">Apresentação Comercial</span>
+    <span class="pill" data-pt="Design Gráfico"                data-en="Graphic Design">Design Gráfico</span>
+    <span class="pill" data-pt="Design Editorial"              data-en="Editorial Design">Design Editorial</span>
+    <span class="pill" data-pt="Ilustração"                    data-en="Illustration">Ilustração</span>
     <span class="pill" data-pt="Edição de Vídeo"               data-en="Video Editing">Edição de Vídeo</span>
     <span class="pill tool" data-pt="Figma"                    data-en="Figma">Figma</span>
     <span class="pill tool" data-pt="Illustrator"              data-en="Illustrator">Illustrator</span>
@@ -563,6 +596,10 @@ footer{background:#080808;border-top:2px solid #1a1a1a;padding:28px 52px;display
         Projetos que importam começam com uma conversa honesta. Me conta o seu desafio.
       </p>
       <a href="mailto:joao.victor.s2201@gmail.com" class="contact-email">joao.victor.s2201@gmail.com</a>
+      <div class="avail-cta" style="margin-top:24px">
+        <p class="avail-label"><span class="avail-dot"></span><span data-pt="Aberto a oportunidades" data-en="Open to opportunities">Aberto a oportunidades</span></p>
+        <p class="avail-p" data-pt="Estou em busca de vagas como UX Designer ou Product Designer — júnior ou pleno — presencial, híbrido ou remoto em São Paulo, ou remoto para qualquer lugar. Se você viu algo no portfólio que faz sentido para o seu time, me chama. Respondo rápido." data-en="I'm looking for UX Designer or Product Designer roles — junior or mid-level — on-site, hybrid or remote in São Paulo, or fully remote anywhere. If you saw something in the portfolio that fits your team, reach out. I reply fast.">Estou em busca de vagas como UX Designer ou Product Designer — júnior ou pleno — presencial, híbrido ou remoto em São Paulo, ou remoto para qualquer lugar. Se você viu algo no portfólio que faz sentido para o seu time, me chama. Respondo rápido.</p>
+      </div>
       <div class="contact-social">
         <a href="https://www.linkedin.com/in/joaovictorvaladares/" target="_blank">LinkedIn ↗</a>
         <a href="https://www.behance.net/estudiocriativomeah" target="_blank">Behance ↗</a>
@@ -602,6 +639,7 @@ footer{background:#080808;border-top:2px solid #1a1a1a;padding:28px 52px;display
 <script>
 var lang = 'pt';
 var curModal = null;
+var activeFilter = 'produto';
 
 /* ═══════════════════════════════════════
    PROJECT DATA
@@ -624,9 +662,9 @@ var P = {
       imgSrc:'plataforma - nestle/1x/CAPA.png',
       heroImgSrc:'plataforma - nestle/1x/CAPA.png',
       metrics:[
-        {v:'3',   l:{pt:'Versões do produto',    en:'Product versions'}},
-        {v:'2',   l:{pt:'Paletas exploradas',    en:'Color palettes'}},
-        {v:'IA',  l:{pt:'No fluxo de trabalho',  en:'In the workflow'}}
+        {v:'2',   l:{pt:'Versões de UI validadas',        en:'UI versions validated'}},
+        {v:'0',   l:{pt:'Fricção no primeiro acesso',     en:'Friction on first access'}},
+        {v:'✓',   l:{pt:'Testado com usuários reais',     en:'Tested with real users'}}
       ],
       challenge:{
         pt:'Como projetar um app mobile para afiliados Nestlé que centralizasse vendas, campanhas, pagamentos e recompensas — servindo um público com diferentes graus de familiaridade digital, sem gerar fricção nem curva de aprendizado? O produto precisava ser funcional no primeiro acesso, com fluxos claros e hierarquia visual que guiasse o usuário sem instrução externa.',
@@ -670,6 +708,11 @@ var P = {
           }
         }
       ],
+      testResult:{
+        pt:'O teste de usabilidade identificou dois pontos de fricção principais: o fluxo de onboarding pedia informações demais na primeira tela, gerando abandono antes da primeira ação; e a hierarquia do dashboard não deixava claro o próximo passo para um afiliado novo.\n\nA versão final priorizou um onboarding progressivo — pedindo apenas o essencial para ativar a conta — e reestruturou o dashboard com uma área de "ação prioritária" destacada no topo. Essas duas mudanças foram as que mais impactaram a percepção de clareza nos testes da versão revisada.',
+        en:'The usability test identified two main friction points: the onboarding flow asked for too much information on the first screen, causing drop-off before the first action; and the dashboard hierarchy did not make the next step clear for a new affiliate.\n\nThe final version prioritized progressive onboarding — asking only for what was essential to activate the account — and restructured the dashboard with a "priority action" area highlighted at the top. These two changes had the greatest impact on clarity perception in the revised version tests.'
+      },
+      type:'produto',
       procImg1:'plataforma - nestle/1x/wireframe + protótipo.png',
       procImg2:'plataforma - nestle/1x/versões do protótipo navegável.png',
       img1bg:'linear-gradient(135deg,#0a0a2a,#1a1a4a)',
@@ -737,6 +780,7 @@ var P = {
           }
         }
       ],
+      type:'produto',
       procImg1:'landing page/wireframe - site.jpg',
       procImg2:'landing page/tela de site - final para usar.mp4',
       img1bg:'linear-gradient(135deg,#2a0000,#5c0000)',
@@ -792,6 +836,7 @@ var P = {
           d:{pt:'Carrinhos enviados para parceiros estratégicos: Zamp (Burger King, Subway, Popeyes e Starbucks), Steal the Look, Disney, TikTok, Vogue, Glamour e ESPN.',en:'Carts sent to strategic partners: Zamp (Burger King, Subway, Popeyes and Starbucks), Steal the Look, Disney, TikTok, Vogue, Glamour and ESPN.'}
         }
       ],
+      type:'marca',
       procImg1:'Impresso Starbucks/WhatsApp Image 2026-04-16 at 14.36.18.jpeg',
       procImg2:'Impresso Starbucks/WhatsApp Image 2026-04-30 at 14.47.54.jpeg',
       img1bg:'linear-gradient(135deg,#0a1a0a,#003020)',
@@ -847,6 +892,7 @@ var P = {
           d:{pt:'Implementação nos pontos de contato do espaço físico: logo em letra caulim na recepção, escultura 3D suspensa do símbolo na arquitetura, uniformes da equipe e materiais institucionais.',en:'Implementation at the physical space touchpoints: logo in raised letters at reception, suspended 3D sculptural symbol in the architecture, team uniforms and institutional materials.'}
         }
       ],
+      type:'marca',
       procImg1:'Identidade visual - SEASONS/Prancheta 3.jpg',
       procImg2:'Identidade visual - SEASONS/Prancheta 5.jpg',
       img1bg:'linear-gradient(135deg,#0a0a08,#1c1810)',
@@ -874,7 +920,9 @@ function cardHTML(sec, idx, p) {
   }).join('');
   var ovb = lang === 'pt' ? 'VER CASE →' : 'VIEW CASE →';
   var bgContent = p.imgSrc ? '<img src="'+p.imgSrc+'" alt="'+title+'">' : '';
-  return '<div class="cc" onclick="openModal(\''+sec+'\','+idx+')">'
+  // Use real index from P.featured for modal
+  var realIdx = P[sec].indexOf(p);
+  return '<div class="cc" onclick="openModal(\''+sec+'\','+realIdx+')">'
     +'<div class="ci"><div class="cbg" style="background:'+p.bg+'">'+bgContent+'</div>'
     +'<div class="cov"><div class="covb">'+ovb+'</div></div>'
     +'<div class="cbadge" style="background:'+p.badge+';color:'+p.badgeTxt+'">CASE '+p.num+'</div></div>'
@@ -889,8 +937,23 @@ function renderGrid(id, sec, arr) {
   el.innerHTML = arr.length ? arr.map(function(p,i){ return cardHTML(sec,i,p); }).join('') : '';
 }
 
+function setFilter(f) {
+  activeFilter = f;
+  document.querySelectorAll('.cf-tab').forEach(function(btn){
+    var btnType = btn.getAttribute('data-pt').toLowerCase();
+    var match = (f === 'todos' && btnType === 'todos') ||
+                (f === 'produto' && btnType === 'produto') ||
+                (f === 'marca' && btnType === 'marca');
+    btn.classList.toggle('active', match);
+  });
+  renderAll();
+}
+
 function renderAll() {
-  renderGrid('home-grid', 'featured', P.featured);
+  var filtered = activeFilter === 'todos'
+    ? P.featured
+    : P.featured.filter(function(p){ return p.type === activeFilter; });
+  renderGrid('home-grid', 'featured', filtered);
 }
 
 /* ── MEDIA TAG HELPER ── */
@@ -906,10 +969,11 @@ function openModal(sec, idx) {
   var p = P[sec][idx];
   curModal = {sec:sec, idx:idx};
   var title = p.title[lang], cat = p.cat[lang];
-  var chl = lang==='pt' ? 'O DESAFIO'       : 'THE CHALLENGE';
-  var stl = lang==='pt' ? 'A ABORDAGEM'     : 'THE APPROACH';
-  var prl = lang==='pt' ? 'O PROCESSO'      : 'THE PROCESS';
-  var pvl = lang==='pt' ? 'PROCESSO VISUAL' : 'VISUAL PROCESS';
+  var chl = lang==='pt' ? 'O DESAFIO'             : 'THE CHALLENGE';
+  var stl = lang==='pt' ? 'A ABORDAGEM'           : 'THE APPROACH';
+  var prl = lang==='pt' ? 'O PROCESSO'            : 'THE PROCESS';
+  var trl = lang==='pt' ? 'O QUE O TESTE REVELOU' : 'WHAT THE TEST REVEALED';
+  var pvl = lang==='pt' ? 'PROCESSO VISUAL'       : 'VISUAL PROCESS';
   var iph = lang==='pt' ? 'Imagem do processo' : 'Process image';
   var mets = p.metrics.map(function(m){
     return '<div class="mm"><span class="mv">'+m.v+'</span><span class="ml">'+m.l[lang]+'</span></div>';
@@ -932,6 +996,7 @@ function openModal(sec, idx) {
     +'<div class="mbody"><div class="mmet">'+mets+'</div>'
     +'<p class="msl">'+chl+'</p><p class="mtxt">'+p.challenge[lang]+'</p>'
     +'<p class="msl">'+stl+'</p><p class="mtxt">'+p.strategy[lang]+'</p>'
+    +(p.testResult ? '<p class="msl">'+trl+'</p><p class="mtxt" style="white-space:pre-line">'+p.testResult[lang]+'</p>' : '')
     +'<p class="msl">'+prl+'</p><div class="ps">'+steps+'</div>'
     +'<p class="msl" style="margin-top:32px">'+pvl+'</p>'
     +'<div class="pimgs">'
